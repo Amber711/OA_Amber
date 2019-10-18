@@ -1,0 +1,22 @@
+<div class="container">
+  <h2> Christmas Ornaments</h2>
+
+  <div *ngFor="let product of products; let i = index" class="product-wrapper">
+
+    <div>
+      <input type="checkbox"
+             class="select-item"
+             (change)="onItemSelected(product, $event)"
+             [checked]="product.checked"
+             [disabled]="product.quantity === 0">
+    </div>
+    <app-product [product]="product"
+                 (changeQuantity)="quantityChangeHandler($event, i)"></app-product>
+
+  </div>
+
+
+  <div class="add-to-bag">
+    <button [disabled]="!enableGoToBagBtn" (click)="goToShoppingBag()">add to bag</button>
+  </div>
+</div>

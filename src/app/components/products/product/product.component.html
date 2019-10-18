@@ -1,0 +1,28 @@
+<div class="container">
+  <!--<div>-->
+    <!--<input type="checkbox" (change)="onItemSelected(product, $event)">-->
+  <!--</div>-->
+  <div class="item-container">
+    <div class="item-img">
+      <img src={{product.picture}} alt={{product.name}} >
+    </div>
+
+    <div class="item-info">
+
+      <p>{{product.name}}</p>
+
+      <div>
+        <p>
+          <span [ngStyle]="{color: product.availability < 6 ? 'red' : ''}">
+            {{ product.availability }} </span> left!</p>
+
+        <div  class="quantity">
+          <p>Qty: <span>{{!product.quantity ? 0 : product.quantity}}</span></p>
+
+          <app-quantity-controls [disableIncrement]="disableIncrement"
+                                 [disableDecrement]="disableDecrement"
+                                 (changeQuantity)="changeItemQuantity(product, $event)">
+          </app-quantity-controls></div></div>
+    </div>
+  </div>
+</div>

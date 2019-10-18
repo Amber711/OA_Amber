@@ -1,0 +1,18 @@
+<div class="container">
+
+    <h2>Shopping Bag</h2>
+
+    <div *ngIf="productList.length > 0">
+      <div *ngFor="let p of productList; let i = index" class="product-box">
+        <app-product [product]="p"
+                     (changeQuantity)="quantityChangeHandler($event, i)"></app-product>
+        <button (click)="removeItem(i)" class="remove-item">remove</button>
+      </div>
+    </div>
+
+    <div *ngIf="productList.length === 0">
+      <p class="empty-bag-text">Your bag is empty</p>
+      <a class="continue-shopping-btn" [routerLink]="['/products']">continue shopping</a>
+    </div>
+
+</div>
